@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title>Mapbox Storytelling</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/mapbox/assembly/publisher-staging/src/svgs/mapbox.svg">
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css' rel='stylesheet' />
+    <script src="https://unpkg.com/intersection-observer@0.12.0/intersection-observer.js"></script>
+    <script src="https://unpkg.com/scrollama"></script>
+    <script src="./image_comparison.js"></script>
+    <script>
+    var config = {
+        style: 'mapbox://styles/mapbox/satellite-streets-v12',
+        accessToken: 'pk.eyJ1IjoiYWtyYW0xMyIsImEiOiJjbTIyNDlhcmUwM3NwMm1xeXVyOTFmcjExIn0.cL91TwZ-RsGmjsnJ-bROKQ',
+        showMarkers: false,
+        theme: 'light',
+        alignment: 'left',
+        title: 'Transformation of Lakes in Hyderabad',
+        subtitle: 'Before and After Views of Various Lakes',
+        byline: 'Author Name',
+        chapters: [
+          {
+            id: 'appa-cheruvu',
+            alignment: 'left',
+            title: 'Appa Cheruvu',
+            image: '../assets/2012_appa_lake.jpg', // Before image
+            imageAfter: '../assets/2024_appa_lake.jpg', // After image (replace with actual after image URL)
+            description: "Appa Cheruvu, once spanning 34 acres, has been significantly reduced to just 12 acres, primarily due to extensive encroachments over the years. The lake has seen both residential and industrial developments built within its Full Tank Level (FTL) and buffer zones. Recent demolitions by HYDRAA targeted sheds and illegal structures in the FTL, aiming to restore the lake's natural water-holding capacity. Notably, flooding from Appa Cheruvu in October 2020 caused severe traffic disruptions near Rajiv Gandhi International Airport, highlighting the dangers of unchecked encroachments",
+            location: {
+              center: [78.4225464,17.3003272],
+              zoom: 15,
+              pitch: 0,
+              bearing: 0
+            },
+            onChapterEnter: [
+              {
+                layer: 'lake-appa-cheruvu',
+                opacity: 0.3
+              }
+            ],
+            onChapterExit: [
+              {
+                layer: 'lake-appa-cheruvu',
+                opacity: 0
+              }
+            ]
+          },
+          {
+            id: 'durgam-cheruvu',
+            alignment: 'left',
+            title: 'Durgam Cheruvu',
+            image: '../assets/2010_Durgam_Cheruvu.jpg', // Before image
+            imageAfter: '../assets/2024_Durgam_Cheruvu.jpg', // After image (replace with actual after image URL)
+            description: "Durgam Cheruvu, located in the upmarket Jubilee Hills area, has been a focal point of encroachment due to its high land value. Structures violating the FTL and buffer zones have contributed to reduced lake boundaries and increased flood risks in the region. HYDRAA's interventions here include demolitions aimed at clearing encroachments, improving drainage, and reinforcing the lake's ecological function. The initiative emphasizes not just reclaiming the lake’s original area but also setting up protective measures to prevent future encroachments​",
+            location: {
+              center: [78.390551,17.434831],
+              zoom: 15,
+              pitch: 0,
+              bearing: 0
+            },
+            onChapterEnter: [
+              {
+                layer: 'lake-durgam-cheruvu',
+                opacity: 0.3
+              }
+            ],
+            onChapterExit: [
+              {
+                layer: 'lake-durgam-cheruvu',
+                opacity: 0
+              }
+            ]
+          },
+          {
+            id: 'sunnem-cheruvu',
+            alignment: 'left',
+            title: 'Sunnam Cheruvu',
+            image: '../assets/2012_Sunnam_Cheruvu.jpg', // Before image
+            imageAfter: '../assets/2024_Sunnam_Cheruvu.jpg', // After image (replace with actual after image URL)
+            description: "Sunnam Cheruvu, located in Madhapur, Hyderabad, has seen extensive illegal construction within its Full Tank Level (FTL) and buffer zones. HYDRAA recently launched a demolition drive to clear unauthorized structures, targeting makeshift sheds and commercial buildings in the area. The operation followed several complaints about encroachments, particularly within survey numbers 12, 13, 14, and 16, where business-oriented structures had compromised the lake's natural boundaries. These demolitions are part of HYDRAA’s ongoing efforts to reclaim Hyderabad’s water bodies and maintain compliance with environmental regulations.",
+            location: {
+              center: [78.403590, 17.452096],
+              zoom: 16,
+              pitch: 0,
+              bearing: 0
+            },
+            onChapterEnter: [
+              {
+                layer: 'lake-sunnem-cheruvu',
+                opacity: 0.3
+              }
+            ],
+            onChapterExit: [
+              {
+                layer: 'lake-sunnem-cheruvu',
+                opacity: 0
+              }
+            ]
+          },
+          {
+            id: 'patelguda-lake',
+            alignment: 'left',
+            title: 'Patelguda Lake',
+            image: '../assets/2013_Patelguda_lake.jpg', // Before image
+            imageAfter: '../assets/2024_Patelguda_lake.jpg', // After image (replace with actual after image URL)
+            description: "Patelguda Lake, like many other urban lakes, has been reduced in size due to aggressive real estate encroachments. HYDRAA's operations at this lake focus on demolishing both residential and commercial buildings within the FTL and buffer zones. The lake is a prime example of how illegal constructions not only diminish natural water bodies but also compromise urban water management, leading to issues like flash floods during heavy rainfall​",
+            location: {
+              center: [78.2921075,17.5436558],
+              zoom: 15,
+              pitch: 0,
+              bearing: 0
+            },
+            onChapterEnter: [
+              {
+                layer: 'lake-patelguda',
+                opacity: 0.3
+              }
+            ],
+            onChapterExit: [
+              {
+                layer: 'lake-patelguda',
+                opacity: 0
+              }
+            ]
+          },
+          {
+            id: 'timmidkunta-lake',
+            alignment: 'left',
+            title: 'Timmidkunta Lake',
+            image: '../assets/2012_Timmidikunta_lake.jpg', // Before image
+            imageAfter: '../assets/2024_Timmidikunta_lake.jpg', // After image (replace with actual after image URL)
+            description: "Timmidkunta Lake in Madhapur is a striking case of how urban development has encroached upon natural water spaces. In August 2024, HYDRAA demolished major structures that had been built within the FTL, including well-known landmarks like the N-Convention Centre, which occupied nearly 5 acres. The case of Timmidkunta highlights how even prominent establishments have violated environmental regulations, resulting in significant loss of lakeland and increased flood vulnerability in the surrounding area",
+            location: {
+              center: [78.380985,17.456746],
+              zoom: 15,
+              pitch: 0,
+              bearing: 0
+            },
+            onChapterEnter: [
+              {
+                layer: 'lake-timmidkunta',
+                opacity: 0.3
+              }
+            ],
+            onChapterExit: [
+              {
+                layer: 'lake-timmidkunta',
+                opacity: 0
+              }
+            ]
+          }
+        ]
+      };
+    
+    </script>
+    
+    <style>
+        body {
+            margin:0;
+            padding:0;
+            font-family: sans-serif;
+        }
+        a, a:hover, a:visited {
+            color: #0071bc;
+        }
+        #description {
+            position: relative;
+            z-index: 10;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            max-width: 80vw;
+            margin: 20px auto;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        #description h1 {
+            font-size: 2em;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        #description h2 {
+            font-size: 1.5em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: #34495e;
+        }
+
+        #description p {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            color: #444;
+        }
+
+        #description ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        #description ul li {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        #description strong {
+            color: #2980b9;
+        }
+        
+        #map {
+            top:0;
+            right: 0;
+            height: 100vh;
+            width:70vw;
+            position: fixed;
+        }
+        #mapInset {
+            bottom:50px;
+            right:30px;
+            height: 180px;
+            width:250px;
+            max-width:100%;
+            position: fixed;
+            z-index: 1;
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+            pointer-events: none;
+        }
+        #mapInset .mapboxgl-ctrl-bottom-left{
+            display: none;
+        }
+        #legend {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            z-index: 10;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #legend div {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .yellow-box, .green-box {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+            border: 1px solid #000;
+        }
+
+        .yellow-box {
+            background-color: #f2ee02;
+        }
+
+        .green-box {
+            background-color: #008000;
+        }
+
+        @media (max-width: 500px) {
+            #mapInset {
+                display: none;
+            }
+        }
+        #header {
+            margin: auto;
+            width: 100%;
+            position: relative;
+            z-index: 5;
+        }
+        #header h1, #header h2, #header p {
+            margin: 0;
+            padding: 2vh 2vw;
+            text-align: center;
+        }
+        #footer {
+            width: 100%;
+            min-height: 5vh;
+            padding-top: 2vh;
+            padding-bottom: 2vh;
+            text-align: center;
+            line-height: 25px;
+            font-size: 13px;
+            position: relative;
+            z-index: 5;
+        }
+        #features {
+            padding-top: 10vh;
+            padding-bottom: 10vh;
+        }
+        .hidden {
+            visibility: hidden;
+        }
+        .centered {
+            width: 50vw;
+            margin: 0 auto;
+        }
+        .lefty {
+            width: 40vw;
+            margin-left: 0vw;
+        }
+        .righty {
+            width: 33vw;
+            margin-left: 62vw;
+        }
+        .fully {
+            width: 100%;
+            margin: auto;
+        }
+        .light {
+            color: #444;
+            background-color: #fafafa;
+        }
+        .dark {
+            color: #fafafa;
+            background-color: #444;
+        }
+        .step {
+            padding-bottom: 50vh;
+            /* margin-bottom: 10vh; */
+            opacity: 0.25;
+        }
+        .step.active {
+            opacity: 0.99;
+        }
+
+        .step div {
+            padding:  25px 50px;
+            line-height: 25px;
+            font-size: 13px;
+        }
+
+        .step img {
+            width: 100%;
+        }
+
+        @media (max-width: 750px) {
+            .centered, .lefty, .righty, .fully {
+                width: 90vw;
+                margin: 0 auto;
+            }
+        }
+
+        /* Fix issue on mobile browser where scroll breaks  */
+        .mapboxgl-canvas-container.mapboxgl-touch-zoom-rotate.mapboxgl-touch-drag-pan,
+        .mapboxgl-canvas-container.mapboxgl-touch-zoom-rotate.mapboxgl-touch-drag-pan .mapboxgl-canvas {
+            touch-action: unset;
+        }
+        #conclusion {
+            z-index: 20;
+            position: relative;
+            padding: 50px 20px;
+            background: linear-gradient(135deg, #e0f7fa, #f4f4f4);
+            text-align: center;
+            border-top: 3px solid #dcdcdc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        #conclusion h2 {
+            font-size: 2.2em;
+            color: #1a5276;
+            margin-bottom: 20px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        #conclusion p {
+            font-size: 1.15em;
+            color: #555;
+            margin: 15px 0 25px;
+            line-height: 1.8;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #conclusion h3 {
+            font-size: 1.8em;
+            color: #21618c;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        #conclusion a {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: #2980b9;
+            color: #fff;
+            font-size: 1.3em;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 25px;
+            margin-top: 25px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        #conclusion a:hover {
+            background-color: #1f6390;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            #conclusion h2 {
+                font-size: 1.8em;
+            }
+            #conclusion p {
+                font-size: 1em;
+            }
+            #conclusion h3 {
+                font-size: 1.4em;
+            }
+            #conclusion a {
+                font-size: 1.1em;
+                padding: 12px 30px;
+            }
+        }
+
+
+
+        </style>
+</head>
+<body>
+    <div id="description">
+        <h1>Understanding HYDRAA’s Mission</h1>
+        <p>The Hyderabad Disaster Response and Asset Protection Agency (HYDRAA) was created to address the severe encroachments on Hyderabad’s water bodies, drainage systems, and lakes. This specialized agency aims to restore natural drainage, prevent flooding, and protect urban ecosystems by demolishing unauthorized structures within Full Tank Levels (FTL) and buffer zones.</p>
+    
+        <h2>The Impact of HYDRAA’s Actions</h2>
+        <p>HYDRAA’s recent operations have cleared hundreds of illegal constructions, significantly improving flood resilience and water retention in key lakes. The image below captures the scale of destruction caused by encroachments and HYDRAA’s efforts to reclaim lake land.</p>
+        <div style="text-align: center;">
+            <img src="../assets/sunnam_cheruvu_dest.jpg" alt="HYDRAA demolition of illegal structures" style="width:50%; margin-top:20px; border-radius:10px;" />
+        </div>
+    
+        <h2>Why This Story Map Matters</h2>
+        <p>This story map offers an in-depth view of five lakes—Appa Cheruvu, Durgam Cheruvu, Sunnam Cheruvu, Patelguda Lake, and Timmidkunta Lake. It visualizes how illegal encroachments have compromised these water bodies, emphasizing the importance of HYDRAA’s interventions.</p>
+        
+        <h2>Achieving Restoration Through This Story</h2>
+        <p>As you scroll, the map zooms into each lake, showing FTL and buffer zone boundaries. It reveals the extent of encroachments and how HYDRAA is addressing them. This interactive story not only highlights the severity of the situation but also demonstrates how ongoing efforts are reclaiming Hyderabad’s natural heritage.</p>
+    </div>
+    
+    <!-- Map and scrolling script remain unchanged -->
+    
+    
+    <div id="legend" style="opacity: 0.7;">
+        <div><span class="yellow-box"></span> Lake</div>
+        <div><span class="green-box"></span> Buffer Zone</div>
+    </div>
+<div id="map"></div>
+<div id="mapInset"></div>
+<div id="story"></div>
+
+<script src="./config.js"></script>
+<script>
+var initLoad = true;
+var layerTypes = {
+    'fill': ['fill-opacity'],
+    'line': ['line-opacity'],
+    'circle': ['circle-opacity', 'circle-stroke-opacity'],
+    'symbol': ['icon-opacity', 'text-opacity'],
+    'raster': ['raster-opacity'],
+    'fill-extrusion': ['fill-extrusion-opacity'],
+    'heatmap': ['heatmap-opacity']
+}
+
+var alignments = {
+    'left': 'lefty',
+    'center': 'centered',
+    'right': 'righty',
+    'full': 'fully'
+}
+
+function getLayerPaintType(layer) {
+    var layerType = map.getLayer(layer).type;
+    return layerTypes[layerType];
+}
+
+function setLayerOpacity(layer) {
+    var paintProps = getLayerPaintType(layer.layer);
+    paintProps.forEach(function(prop) {
+        var options = {};
+        if (layer.duration) {
+            var transitionProp = prop + "-transition";
+            options = { "duration": layer.duration };
+            map.setPaintProperty(layer.layer, transitionProp, options);
+        }
+        map.setPaintProperty(layer.layer, prop, layer.opacity, options);
+    });
+}
+
+var story = document.getElementById('story');
+var features = document.createElement('div');
+features.setAttribute('id', 'features');
+
+var header = document.createElement('div');
+
+if (config.title) {
+    var titleText = document.createElement('h1');
+    titleText.innerText = config.title;
+    header.appendChild(titleText);
+}
+
+if (config.subtitle) {
+    var subtitleText = document.createElement('h2');
+    subtitleText.innerText = config.subtitle;
+    header.appendChild(subtitleText);
+}
+
+if (config.byline) {
+    var bylineText = document.createElement('p');
+    bylineText.innerText = config.byline;
+    header.appendChild(bylineText);
+}
+
+if (header.innerText.length > 0) {
+    header.classList.add(config.theme);
+    header.setAttribute('id', 'header');
+    story.appendChild(header);
+}
+
+config.chapters.forEach((record, idx) => {
+    var container = document.createElement('div');
+    var chapter = document.createElement('div');
+
+    if (record.title) {
+        var title = document.createElement('h3');
+        title.innerText = record.title;
+        chapter.appendChild(title);
+    }
+
+    // Replace the static image with the ImageComparisonSlider
+    if (record.image) {
+        var comparisonSlider = document.createElement('image-comparison-slider');
+        comparisonSlider.setAttribute('before', record.image); // Set the 'before' image
+        comparisonSlider.setAttribute('after', record.imageAfter); // Set the 'after' image (you'll need to add this to your config)
+        comparisonSlider.setAttribute('height', '400px'); // Set the height as needed
+        chapter.appendChild(comparisonSlider);
+    }
+
+    if (record.description) {
+        var story = document.createElement('p');
+        story.innerHTML = record.description;
+        chapter.appendChild(story);
+    }
+
+    container.setAttribute('id', record.id);
+    container.classList.add('step');
+    if (idx === 0) {
+        container.classList.add('active');
+    }
+
+    chapter.classList.add(config.theme);
+    container.appendChild(chapter);
+    container.classList.add(alignments[record.alignment] || 'centered');
+    if (record.hidden) {
+        container.classList.add('hidden');
+    }
+    features.appendChild(container);
+});
+
+story.appendChild(features);
+
+var footer = document.createElement('div');
+
+if (config.footer) {
+    var footerText = document.createElement('p');
+    footerText.innerHTML = config.footer;
+    footer.appendChild(footerText);
+}
+
+if (footer.innerText.length > 0) {
+    footer.classList.add(config.theme);
+    footer.setAttribute('id', 'footer');
+    story.appendChild(footer);
+}
+
+mapboxgl.accessToken = config.accessToken;
+
+// image-comparison-slider.js
+
+class ImageComparisonSlider extends HTMLElement {
+    constructor() {
+        super();
+        this.attachShadow({ mode: 'open' });
+    }
+
+    connectedCallback() {
+        const beforeSrc = this.getAttribute('before');
+        const afterSrc = this.getAttribute('after');
+        const height = this.getAttribute('height') || '500px';
+
+        this.shadowRoot.innerHTML = `
+            <style>
+                .img-comp-container {
+                    position: relative;
+                    overflow: hidden;
+                    max-width: 100%;
+                    height: ${height};
+                }
+
+                .img-comp-img {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    overflow: hidden;
+                }
+
+                .img-comp-img img {
+                    display: block;
+                    vertical-align: middle;
+                    height: 100%;
+                }
+
+                .img-comp-overlay {
+                    width: 50%;
+                }
+                
+                @keyframes slide-hint {
+                    0% { left: 30%; }
+                    50% { left: 70%; }
+                    100% { left: 50%; }
+                }
+
+                .img-comp-slider {
+                    position: absolute;
+                    z-index: 9;
+                    cursor: ew-resize;
+                    width: 40px;
+                    height: 100%;
+                    background-color: rgba(255,255,255,0);
+                    border-left: 1px solid #fff;
+                    border-right: 1px solid #fff;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
+                
+                .label {
+                    position: absolute;
+                    top: 10px;
+                    padding: 5px 10px;
+                    background-color: rgba(0, 0, 0, 0.7);
+                    color: #fff;
+                    font-size: 14px;
+                    z-index: 10;
+                    border-radius: 3px;
+                }
+
+                .before { right: 10px; }
+                .after { left: 10px; }
+                
+                .img-comp-handle {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    width: 40px;
+                    height: 40px;
+                    background-color: #fff;
+                    border: 1px solid #000;
+                    border-radius: 50%;
+                    transform: translate(-50%, -50%);
+                    cursor: pointer;
+                }
+
+                @keyframes fade-out {
+                    to { opacity: 0; visibility: hidden; }
+                }
+                
+                .instruction-overlay {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    padding: 10px 20px;
+                    background-color: rgba(0, 0, 0, 0.7);
+                    color: #fff;
+                    font-size: 16px;
+                    border-radius: 5px;
+                    z-index: 15;
+                    pointer-events: none;
+                }
+
+                .drag-instruction {
+                    position: absolute;
+                    top: -30px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    font-size: 14px;
+                    color: #000;
+                    background-color: rgba(255, 255, 255, 0.7);
+                    padding: 2px 5px;
+                    border-radius: 5px;
+                }
+            </style>
+            <div class="img-comp-container">
+                <div class="instruction-overlay">Drag to compare</div>
+                <div class="img-comp-img">
+                    <span class="label before">Before 2014</span>
+                    <img src="${beforeSrc}" alt="Before Image">
+                </div>
+                <div class="img-comp-img img-comp-overlay">
+                    <span class="label after">2024</span>
+                    <img src="${afterSrc}" alt="After Image">
+                </div>
+                <div class="img-comp-slider">
+                    <div class="img-comp-handle"></div>
+                </div>
+            </div>
+        `;
+
+        this.initImageComparisonSlider(this.shadowRoot.querySelector('.img-comp-container'));
+    }
+
+    initImageComparisonSlider(container) {
+        var overlay = container.querySelector('.img-comp-overlay');
+        var slider = container.querySelector('.img-comp-slider');
+        var handle = container.querySelector('.img-comp-handle');
+
+        var clicked = false;
+        var width = container.offsetWidth;
+
+        /* Initialize overlay and slider positions */
+        overlay.style.width = (width / 2) + "px";
+        slider.style.left = (width / 2) + "px";
+
+        /* Event listeners for dragging the slider */
+        handle.addEventListener('mousedown', slideReady);
+        window.addEventListener('mouseup', slideFinish);
+        window.addEventListener('mousemove', slideMove);
+
+        /* Touch events for mobile devices */
+        handle.addEventListener('touchstart', slideReady);
+        window.addEventListener('touchend', slideFinish);
+        window.addEventListener('touchmove', slideMove);
+
+        function slideReady(e) {
+            e.preventDefault();
+            clicked = true;
+        }
+
+        function slideFinish() {
+            clicked = false;
+        }
+
+        function slideMove(e) {
+            if (!clicked) return;
+            var pos = getCursorPos(e);
+            if (pos < 0) pos = 0;
+            if (pos > width) pos = width;
+            slide(pos);
+        }
+
+        function getCursorPos(e) {
+            var rect = container.getBoundingClientRect();
+            var x = 0;
+            if (e.touches) {
+                x = e.touches[0].clientX - rect.left;
+            } else {
+                x = e.clientX - rect.left;
+            }
+            return x;
+        }
+
+        function slide(x) {
+            overlay.style.width = x + "px";
+            slider.style.left = x + "px";
+        }
+    }
+}
+
+customElements.define('image-comparison-slider', ImageComparisonSlider);
+
+
+const transformRequest = (url) => {
+    const hasQuery = url.indexOf("?") !== -1;
+    const suffix = hasQuery ? "&pluginName=scrollytellingV2" : "?pluginName=scrollytellingV2";
+    return {
+      url: url + suffix
+    }
+}
+
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: config.style,
+    center: config.chapters[0].location.center,
+    zoom: config.chapters[0].location.zoom,
+    bearing: config.chapters[0].location.bearing,
+    pitch: config.chapters[0].location.pitch,
+    interactive: false,
+    transformRequest: transformRequest,
+    projection: config.projection
+});
+
+// Create a inset map if enabled in config.js
+if (config.inset) {
+ var insetMap = new mapboxgl.Map({
+    container: 'mapInset', // container id
+    style: 'mapbox://styles/mapbox/dark-v10', //hosted style id
+    center: config.chapters[0].location.center,
+    // Hardcode above center value if you want insetMap to be static.
+    zoom: 3, // starting zoom
+    hash: false,
+    interactive: false,
+    attributionControl: false,
+    //Future: Once official mapbox-gl-js has globe view enabled,
+    //insetmap can be a globe with the following parameter.
+    //projection: 'globe'
+  });
+}
+
+if (config.showMarkers) {
+    var marker = new mapboxgl.Marker({ color: config.markerColor });
+    marker.setLngLat(config.chapters[0].location.center).addTo(map);
+}
+
+// instantiate the scrollama
+var scroller = scrollama();
+
+
+map.on("load", function() {
+    if (config.use3dTerrain) {
+        map.addSource('mapbox-dem', {
+            'type': 'raster-dem',
+            'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
+            'tileSize': 512,
+            'maxzoom': 14
+        });
+        // add the DEM source as a terrain layer with exaggerated height
+        map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
+
+        // add a sky layer that will show when the map is highly pitched
+        map.addLayer({
+            'id': 'sky',
+            'type': 'sky',
+            'paint': {
+                'sky-type': 'atmosphere',
+                'sky-atmosphere-sun': [0.0, 0.0],
+                'sky-atmosphere-sun-intensity': 15
+            }
+        });
+
+        // Add the lake layers
+            map.addLayer({
+                'id': 'lake-appa-cheruvu',
+                'type': 'fill',
+                'source': 'lakes',
+                'paint': {
+                    'fill-color': [
+                        'match',
+                        ['get', 'name'],
+                        'APPA CHERUVU',
+                        '#008000',
+                        'APPA CHERUVU_BUFFER',
+                        '#f2ee02',
+                        '#ffffff' // default color
+                    ],
+                    'fill-opacity': 1
+                }
+            });
+    };
+
+    // Load the lakes.json file using fetch
+    fetch('https://raw.githubusercontent.com/Akram-landeed/blog-geojson/refs/heads/main/lakes.json')
+        .then(response => response.json())
+        .then(data => {
+            // Add the lakes source
+            map.addSource('lakes', {
+                type: 'geojson',
+                data: data
+            });
+            // Add the lake layers
+            map.addLayer({
+                'id': 'lake-appa-cheruvu',
+                'type': 'fill',
+                'source': 'lakes',
+                'paint': {
+                    'fill-color': [
+                        'match',
+                        ['get', 'name'],
+                        'APPA CHERUVU',
+                        '#008000',
+                        'APPA CHERUVU_BUFFER',
+                        '#f2ee02',
+                        '#ffffff' // default color
+                    ],
+                    'fill-opacity': 0
+                }
+            });
+
+            map.addLayer({
+                'id': 'lake-durgam-cheruvu',
+                'type': 'fill',
+                'source': 'lakes',
+                'paint': {
+                    'fill-color': [
+                        'match',
+                        ['get', 'name'],
+                        'DURGAM CHERUVU',
+                        '#008000',
+                        'DURGAM CHERUVU_BUFFER',
+                        '#f2ee02',
+                        '#ffffff' // default color
+                    ],
+                    'fill-opacity': 0
+                }
+            });
+
+
+            map.addLayer({
+                'id': 'lake-sunnem-cheruvu',
+                'type': 'fill',
+                'source': 'lakes',
+                'paint': {
+                    'fill-color': [
+                        'match',
+                        ['get', 'name'],
+                        'SUNNEM CHERUVU',
+                        '#f2ee02',
+                        'SUNNEM CHERUVU_BUFFER',
+                        '#008000',
+                        '#ffffff' // default color
+                    ],
+                    'fill-opacity': 0
+                }
+            });
+
+            map.addLayer({
+                'id': 'lake-patelguda',
+                'type': 'fill',
+                'source': 'lakes',
+                'paint': {
+                    'fill-color': [
+                        'match',
+                        ['get', 'name'],
+                        'PATLA CHERUVU',
+                        '#f2ee02',
+                        'PATLA CHERUVU_BUFFER',
+                        '#008000',
+                        '#ffffff' // default color
+                    ],
+                    'fill-opacity': 0
+                }
+            });
+
+
+            map.addLayer({
+                'id': 'lake-timmidkunta',
+                'type': 'fill',
+                'source': 'lakes',
+                'paint': {
+                    'fill-color': [
+                        'match',
+                        ['get', 'name'],
+                        'THAMMIDI KUNTA',
+                        '#008000',
+                        'THAMMIDI KUNTA_BUFFER',
+                        '#f2ee02',
+                        '#ffffff' // default color
+                    ],
+                    'fill-opacity': 0
+                }
+            });
+        })
+        .catch(error => console.error('Error loading lakes.json:', error));
+
+    // As the map moves, grab and update bounds in inset map.
+    if (config.inset) {
+        map.on('move', getInsetBounds);
+    }
+
+    // setup the instance, pass callback functions
+    scroller
+    .setup({
+        step: '.step',
+        offset: 0.5,
+        progress: true
+    })
+    .onStepEnter(async response => {
+        var current_chapter = config.chapters.findIndex(chap => chap.id === response.element.id);
+        var chapter = config.chapters[current_chapter];
+        
+        response.element.classList.add('active');
+
+        var comparisonSlider = response.element.querySelector('image-comparison-slider');
+        
+        if (comparisonSlider) {
+            var slider = comparisonSlider.shadowRoot.querySelector('.img-comp-slider');
+            var handle = comparisonSlider.shadowRoot.querySelector('.img-comp-handle');
+            var overlay = comparisonSlider.shadowRoot.querySelector('.instruction-overlay');
+
+
+            // Restart animation by resetting the CSS property
+            [slider, handle].forEach(el => {
+                el.style.animation = 'none';
+                setTimeout(() => {
+                    el.style.animation = 'slide-hint 2s ease-in-out 1';
+                }, 50);
+            });
+
+            overlay.style.animation = 'fade-out 2s ease-in-out 1';
+            overlay.addEventListener('animationend', () => {
+                overlay.style.visibility = 'hidden'; // Hide the overlay after the animation
+            });
+        }
+
+        map[chapter.mapAnimation || 'flyTo'](chapter.location);
+
+        // Incase you do not want to have a dynamic inset map,
+        // rather want to keep it a static view but still change the
+        // bbox as main map move: comment out the below if section.
+        if (config.inset) {
+          if (chapter.location.zoom < 5) {
+            insetMap.flyTo({center: chapter.location.center, zoom: 0});
+          }
+          else {
+            insetMap.flyTo({center: chapter.location.center, zoom: 3});
+          }
+        }
+        if (config.showMarkers) {
+            marker.setLngLat(chapter.location.center);
+        }
+        if (chapter.onChapterEnter.length > 0) {
+            chapter.onChapterEnter.forEach(setLayerOpacity);
+        }
+        if (chapter.callback) {
+            window[chapter.callback]();
+        }
+        if (chapter.rotateAnimation) {
+            map.once('moveend', () => {
+                const rotateNumber = map.getBearing();
+                map.rotateTo(rotateNumber + 180, {
+                    duration: 30000, easing: function (t) {
+                        return t;
+                    }
+                });
+            });
+        }
+        if (config.auto) {
+             var next_chapter = (current_chapter + 1) % config.chapters.length;
+             map.once('moveend', () => {
+                 document.querySelectorAll('[data-scrollama-index="' + next_chapter.toString() + '"]')[0].scrollIntoView();
+             });
+        }
+    })
+    .onStepExit(response => {
+        var chapter = config.chapters.find(chap => chap.id === response.element.id);
+        response.element.classList.remove('active');
+        if (chapter.onChapterExit.length > 0) {
+            chapter.onChapterExit.forEach(setLayerOpacity);
+        }
+
+        var comparisonSlider = response.element.querySelector('image-comparison-slider');
+        if (comparisonSlider) {
+            comparisonSlider.classList.remove('animation-active'); // Reset the animation state
+        }
+    });
+
+
+    if (config.auto) {
+        document.querySelectorAll('[data-scrollama-index="0"]')[0].scrollIntoView();
+    }
+});
+
+//Helper functions for insetmap
+function getInsetBounds() {
+            let bounds = map.getBounds();
+
+            let boundsJson = {
+                "type": "FeatureCollection",
+                "features": [{
+                    "type": "Feature",
+                    "properties": {},
+                    "geometry": {
+                        "type": "Polygon",
+                        "coordinates": [
+                            [
+                                [
+                                    bounds._sw.lng,
+                                    bounds._sw.lat
+                                ],
+                                [
+                                    bounds._ne.lng,
+                                    bounds._sw.lat
+                                ],
+                                [
+                                    bounds._ne.lng,
+                                    bounds._ne.lat
+                                ],
+                                [
+                                    bounds._sw.lng,
+                                    bounds._ne.lat
+                                ],
+                                [
+                                    bounds._sw.lng,
+                                    bounds._sw.lat
+                                ]
+                            ]
+                        ]
+                    }
+                }]
+            }
+
+            if (initLoad) {
+                addInsetLayer(boundsJson);
+                initLoad = false;
+            } else {
+                updateInsetLayer(boundsJson);
+            }
+
+        }
+
+function addInsetLayer(bounds) {
+    insetMap.addSource('boundsSource', {
+        'type': 'geojson',
+        'data': bounds
+    });
+
+    insetMap.addLayer({
+        'id': 'boundsLayer',
+        'type': 'fill',
+        'source': 'boundsSource', // reference the data source
+        'layout': {},
+        'paint': {
+            'fill-color': '#fff', // blue color fill
+            'fill-opacity': 0.2
+        }
+    });
+    // // Add a black outline around the polygon.
+    insetMap.addLayer({
+        'id': 'outlineLayer',
+        'type': 'line',
+        'source': 'boundsSource',
+        'layout': {},
+        'paint': {
+            'line-color': '#000',
+            'line-width': 1
+        }
+    });
+}
+
+function updateInsetLayer(bounds) {
+    insetMap.getSource('boundsSource').setData(bounds);
+}
+
+</script>
+<div id="conclusion">
+    <h2>Ensure Responsible Land Purchases</h2>
+    <p>When purchasing land in Hyderabad, it’s crucial to ensure that your chosen location does not fall within Full Tank Level (FTL) or buffer zones of protected water bodies. Our website offers tools to verify land status, helping you make informed and compliant real estate decisions. By accessing the official maps, you can clearly identify FTL and buffer areas, ensuring your investment aligns with local regulations and environmental standards.</p>
+
+    <h3>Check Your Location Now</h3>
+    <p>Visit our website to explore FTL and buffer zone maps. You can enter the location details to verify its status and download official maps for detailed reference.</p>
+    
+    <a href="https://yourwebsite.com/check-ftl-buffer" target="_blank" style="display: block; margin: 20px auto; text-align: center; padding: 15px 25px; background-color: #2980b9; color: white; text-decoration: none; border-radius: 5px; font-size: 1.2em;">Verify Land Status & Download Official Maps</a>
+</div>
+
+
+</body>
+</html>
