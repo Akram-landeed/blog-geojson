@@ -29,7 +29,7 @@
             imageAfter: 'https://raw.githubusercontent.com/Akram-landeed/blog-geojson/main/2024_appa_lake.jpg', // After image (replace with actual after image URL)
             description: "Originally a 34-acre water body, Appa Cheruvu has shrunk to just 12 acres due to rampant encroachments by residential and industrial developments that violate the Full Tank Level (FTL) and buffer zones.",
             location: {
-              center: [78.4225464,17.3003272],
+              center: [78.4225464,17.2983272],
               zoom: 15,
               pitch: 0,
               bearing: 0
@@ -50,7 +50,7 @@
             image: 'https://raw.githubusercontent.com/Akram-landeed/blog-geojson/main/appa%20cheruvu.jpg', // Placeholder image
             description: "HYDRAA's recent demolition drive targeted illegal sheds within the FTL, including those linked to BJP corporators, aiming to restore the lake's water-holding capacity and improve its natural flow. This action reflects a focused effort to clear obstructions and revive the lake.",
             location: {
-              center: [78.4225464,17.3003272],
+              center: [78.4225464,17.2983272],
               zoom: 15,
               pitch: 0,
               bearing: 0
@@ -131,7 +131,7 @@
             imageAfter: 'https://raw.githubusercontent.com/Akram-landeed/blog-geojson/main/2024_Sunnam_Cheruvu.jpg', // After image (replace with actual after image URL)
             description: "Sunnam Cheruvu, situated in Madhapur, has experienced significant encroachment over the years, with both makeshift and permanent constructions violating the Full Tank Level (FTL) and buffer zones. The ongoing encroachments have contributed to the lake’s shrinking area.",
             location: {
-              center: [78.403590, 17.452096],
+              center: [78.401590, 17.452096],
               zoom: 16,
               pitch: 0,
               bearing: 0
@@ -151,7 +151,7 @@
             title: 'Sunnam Cheruvu',
             description: "In a recent demolition drive, HYDRAA focused on clearing unauthorized sheds and commercial structures built within the FTL of Sunnam Cheruvu. The aim was to reclaim the lake’s natural space and improve water retention capacity, addressing long-standing encroachment issues.",
             location: {
-              center: [78.403590, 17.452096],
+              center: [78.401590, 17.452096],
               zoom: 16,
               pitch: 0,
               bearing: 0
@@ -180,7 +180,7 @@
             image: 'https://raw.githubusercontent.com/Akram-landeed/blog-geojson/main/sunnam%20cheruvu.jpeg', // Before image
             description: "The drive also sparked controversy, particularly over the demolition of a building whose owner argued it was outside the FTL. The case highlighted confusion due to changing FTL definitions, leading to legal disputes and public criticism. This underscores the need for clearer demarcations and consistent enforcement of lake boundaries.",
             location: {
-              center: [78.403590, 17.452096],
+              center: [78.401590, 17.452096],
               zoom: 16,
               pitch: 0,
               bearing: 0
@@ -210,7 +210,7 @@
             imageAfter: 'https://raw.githubusercontent.com/Akram-landeed/blog-geojson/main/2024_Patelguda_lake.jpg', // After image (replace with actual after image URL)
             description: "Patelguda Lake has suffered from aggressive encroachments, leading to a drastic reduction in water spread and loss of natural water inflows.",
             location: {
-              center: [78.2921075,17.5436558],
+              center: [78.2901075,17.5426558],
               zoom: 15,
               pitch: 0,
               bearing: 0
@@ -231,7 +231,7 @@
             image: 'https://raw.githubusercontent.com/Akram-landeed/blog-geojson/main/patla%20cheruvu.png', // Before image
             description: "HYDRAA’s demolition efforts have targeted both residential and commercial structures within the FTL. The lake’s drying up is a stark consequence of unchecked urbanization, highlighting the urgent need for conservation measures.",
             location: {
-              center: [78.2921075,17.5436558],
+              center: [78.2901075,17.5426558],
               zoom: 15,
               pitch: 0,
               bearing: 0
@@ -253,7 +253,7 @@
             imageAfter: 'https://raw.githubusercontent.com/Akram-landeed/blog-geojson/main/2024_Timmidikunta_lake.jpg', // After image (replace with actual after image URL)
             description: "Timmidkunta Lake, like other Hyderabad water bodies, has been encroached upon, including by prominent commercial establishments.",
             location: {
-              center: [78.380985,17.456746],
+              center: [78.378985,17.456746],
               zoom: 15,
               pitch: 0,
               bearing: 0
@@ -274,7 +274,7 @@
             image: 'https://raw.githubusercontent.com/Akram-landeed/blog-geojson/main/nconvention.jpg', // Before image
             description: "The demolition of the N-Convention Centre, which occupied nearly five acres of the lake’s FTL, underscores the scale of encroachment. This high-profile case demonstrates that even major establishments are not exempt from enforcement, reinforcing the need for rigorous regulatory action.",
             location: {
-              center: [78.380985,17.456746],
+              center: [78.378985,17.456746],
               zoom: 15,
               pitch: 0,
               bearing: 0
@@ -359,9 +359,9 @@
         
         #map {
             top:100px;
-            right: 0;
-            height: 100vh;
-            width:70vw;
+            right: 100px;
+            height: 70vh;
+            width:60vw;
             position: fixed;
         }
         #mapInset {
@@ -452,7 +452,7 @@
         }
         .lefty {
             width: 40vw;
-            margin-left: 0vw;
+            margin-left: 10vw;
         }
         .righty {
             width: 33vw;
@@ -588,17 +588,15 @@
         <h2>Story of 5 lakes</h2>
         <p>This story map offers an in-depth view of five lakes—Appa Cheruvu, Durgam Cheruvu, Sunnam Cheruvu, Patelguda Lake, and Timmidkunta Lake. It visualizes how illegal encroachments have compromised these water bodies, emphasizing the importance of HYDRAA’s interventions.</p>
    </div>
-    
-    <!-- Map and scrolling script remain unchanged -->
-    
+
     
     <div id="legend" style="opacity: 0.7;">
         <div><span class="yellow-box"></span> Lake</div>
         <div><span class="green-box"></span> Buffer Zone</div>
     </div>
-<div id="map"></div>
-<div id="mapInset"></div>
-<div id="story"></div>
+    <div id="map"></div>
+    <div id="mapInset"></div>
+    <div id="story"></div>
 
 <script src="./config.js"></script>
 <script>
@@ -1191,6 +1189,7 @@ map.on("load", function() {
         var chapter = config.chapters[current_chapter];
         
         response.element.classList.add('active');
+        document.getElementById('map').classList.remove('hidden');
 
         var comparisonSlider = response.element.querySelector('image-comparison-slider');
         
@@ -1271,6 +1270,9 @@ map.on("load", function() {
         document.querySelectorAll('[data-scrollama-index="0"]')[0].scrollIntoView();
     }
 });
+
+
+document.getElementById('map').classList.add('hidden');
 
 //Helper functions for insetmap
 function getInsetBounds() {
